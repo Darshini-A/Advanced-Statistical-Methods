@@ -1,0 +1,57 @@
+> Gender<-c('M','M','F','M','F','F','F','F','F','F')
+> Voting_Pref<-c('O','E','E','E','E','O','O','O','O','O')
+> typeof(Gender)
+[1] "character"
+> Gender<-factor(Gender)
+> typeof(Gender)
+[1] "integer"
+> data<-table(Gender,Voting_Pref)
+> chisq.test(data)
+
+	Pearson's Chi-squared test with Yates' continuity correction
+
+data:  data
+X-squared = 0.17857, df = 1, p-value = 0.6726
+
+Warning message:
+In chisq.test(data) : Chi-squared approximation may be incorrect
+
+
+
+> Gender<-c('M','M','F','M','F','F','F','F','F','F')
+> Voting_Pref<-c('O','E','E','O','E','O','O','O','O','O')
+> typeof(Gender)
+[1] "character"
+> Gender<-factor(Gender)
+> typeof(Gender)
+[1] "integer"
+> data<-table(Gender,Voting_Pref)
+> chisq.test(data)
+
+	Pearson's Chi-squared test with Yates' continuity correction
+
+data:  data
+X-squared = 3.1108e-31, df = 1, p-value = 1
+
+Warning message:
+In chisq.test(data) : Chi-squared approximation may be incorrect
+
+ 
+
+> Gender<-c('M','M','F','M','F','F','F','F','F','F','M','M','M','F','M')
+> Smoking_Pref<-c('N','S','S','N','N','S','S','S','S','S','N','N','S','S','S')
+> typeof(Gender)
+[1] "character"
+> Gender<-factor(Gender)
+> typeof(Gender)
+[1] "integer"
+> data<-table(Gender,Smoking_Pref)
+> chisq.test(data)
+
+	Pearson's Chi-squared test with Yates' continuity correction
+
+data:  data
+X-squared = 1.6406, df = 1, p-value = 0.2002
+
+Warning message:
+In chisq.test(data) : Chi-squared approximation may be incorrect
