@@ -1,0 +1,57 @@
+> set.seed(1234)
+> mydata = data.frame()
+> mydata = data.frame(
++ name = paste0(rep("R_", 10), 1:10),
++ weight = round(rnorm(10,30,2), 1)
++ )
+> print(mydata)
+   name weight
+1   R_1   27.6
+2   R_2   30.6
+3   R_3   32.2
+4   R_4   25.3
+5   R_5   30.9
+6   R_6   31.0
+7   R_7   28.9
+8   R_8   28.9
+9   R_9   28.9
+10 R_10   28.2
+> wilcox.test(mydata$weight, mu=25)
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  mydata$weight
+V = 55, p-value = 0.005793
+alternative hypothesis: true location is not equal to 25
+
+Warning message:
+In wilcox.test.default(mydata$weight, mu = 25) :
+  cannot compute exact p-value with ties
+> 
+> 
+> 
+> wilcox.test(mydata$weight, mu=25, alternative="less")
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  mydata$weight
+V = 55, p-value = 0.9979
+alternative hypothesis: true location is less than 25
+
+Warning message:
+In wilcox.test.default(mydata$weight, mu = 25, alternative = "less") :
+  cannot compute exact p-value with ties
+> 
+> 
+> 
+> wilcox.test(mydata$weight, mu=25, alternative="greater")
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  mydata$weight
+V = 55, p-value = 0.002897
+alternative hypothesis: true location is greater than 25
+
+Warning message:
+In wilcox.test.default(mydata$weight, mu = 25, alternative = "greater") :
+  cannot compute exact p-value with ties
