@@ -1,0 +1,113 @@
+> library(MASS)
+> mydata = immer
+> head(immer)
+  Loc Var    Y1    Y2
+1  UF   M  81.0  80.7
+2  UF   S 105.4  82.3
+3  UF   V 119.7  80.4
+4  UF   T 109.7  87.2
+5  UF   P  98.3  84.2
+6   W   M 146.6 100.4
+> wilcox.test(immer$Y1, immer$Y2, paired=TRUE)
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  immer$Y1 and immer$Y2
+V = 368.5, p-value = 0.005318
+alternative hypothesis: true location shift is not equal to 0
+
+Warning message:
+In wilcox.test.default(immer$Y1, immer$Y2, paired = TRUE) :
+  cannot compute exact p-value with ties
+Session restored from your saved work on 2023-Feb-13 03:57:18 UTC (9 minutes ago)
+> 
+> 
+> 
+> bfr <- c(190.1,190.9,172.7,213,231.4,196.9,172.9,285.5,225.2,113.7)
+> aft <- c(392.9,313.2,345.1,393,434,227.9,422,383.9,392.3,352.2)
+> mydata = data.frame(
++ group = rep(c("bfr", "aft"), each=10),
++ weight = c(bfr,aft)
++ )
+> mydata = data.frame(
++ group = rep(c("bfr", "aft"), each=10),
++ weight = c(bfr,aft)
++ )
+> mydata
+   group weight
+1    bfr  190.1
+2    bfr  190.9
+3    bfr  172.7
+4    bfr  213.0
+5    bfr  231.4
+6    bfr  196.9
+7    bfr  172.9
+8    bfr  285.5
+9    bfr  225.2
+10   bfr  113.7
+11   aft  392.9
+12   aft  313.2
+13   aft  345.1
+14   aft  393.0
+15   aft  434.0
+16   aft  227.9
+17   aft  422.0
+18   aft  383.9
+19   aft  392.3
+20   aft  352.2
+> wilcox.test(bfr, aft, paired = TRUE)
+
+	Wilcoxon signed rank exact test
+
+data:  bfr and aft
+V = 0, p-value = 0.001953
+alternative hypothesis: true location shift is not equal to 0
+
+> myd = data.frame(dbfr=bfr, daft=aft)
+> myd
+    dbfr  daft
+1  190.1 392.9
+2  190.9 313.2
+3  172.7 345.1
+4  213.0 393.0
+5  231.4 434.0
+6  196.9 227.9
+7  172.9 422.0
+8  285.5 383.9
+9  225.2 392.3
+10 113.7 352.2
+> wilcox.test(myd$dbfr, myd$daft, paired = TRUE)
+
+	Wilcoxon signed rank exact test
+
+data:  myd$dbfr and myd$daft
+V = 0, p-value = 0.001953
+alternative hypothesis: true location shift is not equal to 0
+
+> 
+> 
+> 
+> wilcox.test(weight~group, data=mydata, paired = TRUE, alternative="less")
+
+	Wilcoxon signed rank exact test
+
+data:  weight by group
+V = 55, p-value = 1
+alternative hypothesis: true location shift is less than 0
+
+> wilcox.test(weight~group, data=mydata, paired = TRUE, alternative="greater")
+
+	Wilcoxon signed rank exact test
+
+data:  weight by group
+V = 55, p-value = 0.0009766
+alternative hypothesis: true location shift is greater than 0
+
+
+> wilcox.test(weight~group, data=mydata, paired = TRUE, alternative="two.sided")
+
+	Wilcoxon signed rank exact test
+
+data:  weight by group
+V = 55, p-value = 0.001953
+alternative hypothesis: true location shift is not equal to 0
