@@ -38,4 +38,5 @@ x <- 0:n
 dbinom(6, size=n, prob=p)
 plot(x, dbinom(x, size=n, prob=p), main= "PMF for bin (13, 0.7)")
 pbinom(9, size=n, prob=p)
+
 plot(x, pbinom(x, size=n, prob=p), type='s', main= "CDF for bin (13, 0.7)")
