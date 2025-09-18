@@ -1,5 +1,3 @@
-# Moving Average
-
 # time stamps
 install.packages("zoo")
 library(zoo)
@@ -24,4 +22,5 @@ ma_max <- rollmax(series, k = 5)
 ma_max
 
 ma_median <- rollmedian(series, k = 5)
+
 ma_median
